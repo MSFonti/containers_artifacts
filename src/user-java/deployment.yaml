@@ -1,0 +1,23 @@
+# registryrnr9881.azurecr.io/userjava:v1
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: userjava-deployment
+  namespace: api
+  labels:
+    app: userjava
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: userjava
+  template:
+    metadata:
+      labels:
+        app: userjava
+    spec:
+      containers:
+      - name: userjava
+        image: registryrnr9881.azurecr.io/userjava:v1
+        ports:
+        - containerPort: 8080
