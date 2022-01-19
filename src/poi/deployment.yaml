@@ -20,3 +20,16 @@ spec:
         image: registryrnr9881.azurecr.io/poi:v1
         ports:
         - containerPort: 8080
+        env:
+        - name: SQL_SERVER
+          value: simulatorregistryrnr9881.northeurope.azurecontainer.io
+        - name: SQL_USER
+          valueFrom:
+            secretKeyRef:
+              key: User
+              name: test-secret
+        - name: SQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: password
+              name: test-secret
