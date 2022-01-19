@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+# registryrnr9881.azurecr.io/userjava:v1
+>>>>>>> c69bac548d99eb1223415ef80374e483eed75043
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -6,7 +10,11 @@ metadata:
   labels:
     app: userjava
 spec:
+<<<<<<< HEAD
   replicas: 2
+=======
+  replicas: 1
+>>>>>>> c69bac548d99eb1223415ef80374e483eed75043
   selector:
     matchLabels:
       app: userjava
@@ -19,6 +27,7 @@ spec:
       - name: userjava
         image: registryrnr9881.azurecr.io/userjava:v1
         ports:
+<<<<<<< HEAD
         - containerPort: 8080
         env:
           - name: ASPNETCORE_ENVIRONMENT
@@ -35,3 +44,6 @@ spec:
               secretKeyRef:
                 name: test-secret
                 key: User
+=======
+        - containerPort: 8080
+>>>>>>> c69bac548d99eb1223415ef80374e483eed75043

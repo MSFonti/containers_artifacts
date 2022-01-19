@@ -21,6 +21,7 @@ spec:
         ports:
         - containerPort: 8080
         env:
+<<<<<<< HEAD
           - name: ASPNETCORE_ENVIRONMENT
             value: Development
           - name: SQL_SERVER
@@ -37,3 +38,17 @@ spec:
                 key: User
            
               
+=======
+        - name: SQL_SERVER
+          value: simulatorregistryrnr9881.northeurope.azurecontainer.io
+        - name: SQL_USER
+          valueFrom:
+            secretKeyRef:
+              key: User
+              name: test-secret
+        - name: SQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: password
+              name: test-secret
+>>>>>>> c69bac548d99eb1223415ef80374e483eed75043

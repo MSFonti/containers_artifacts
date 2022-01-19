@@ -41,3 +41,6 @@ kubectl apply -f userProfileService.yaml
 kubectl apply -f poiService.yaml
 kubectl apply -f tripsService.yaml
 kubectl apply -f tripViewerService.yaml
+
+kubectl apply -f web-role.yaml
+

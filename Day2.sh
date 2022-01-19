@@ -19,6 +19,7 @@ kubectl get deployments --all-namespaces=true
 kubectl create namespace web
 kubectl create namespace api
 
+<<<<<<< HEAD
 kubectl apply -f ./src/poi/deployment.yaml
 kubectl apply -f ./src/user-java/deployment.yaml
 kubectl apply -f ./src/tripviewer/deployment.yaml
@@ -56,3 +57,45 @@ kubectl attach trips-deployment-75f44b84f7-5qrzs -c curl 'http://localhost:8080/
 
 
 
+=======
+##login into AKS
+az account set --subscription ede43ea8-2169-4c98-b245-311bbb2b78dc
+az aks get-credentials --resource-group teamawesome --name myCluster
+
+
+az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acr-resource-id>
+##Deploy yaml
+kubectl apply -f .\deployment.yaml
+
+
+#Template yaml ###########################################
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: poi-deployment
+  namespace: api
+  labels:
+    app: poi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: poi
+  template:
+    metadata:
+      labels:
+        app: poi
+    spec:
+      containers:
+      - name: poi
+        image: registryrnr9881.azurecr.io/poi:v1
+        ports:
+        - containerPort: 8080
+
+###########END
+
+
+sqlserverrnr9881
+SQL Server Username: sqladminrNr9881
+SQL Server Password: uZ0qe1Kp3
+>>>>>>> c69bac548d99eb1223415ef80374e483eed75043
