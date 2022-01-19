@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: userjava
+  namespace: api
+spec:
+  type: ClusterIP
+  selector:
+    app: userjava
+  ports:
+    - protocol: TCP
+      name: userjava-http
+      port: 80
+      targetPort: 80

@@ -20,4 +20,19 @@ spec:
         image: registryrnr9881.azurecr.io/trips:v1
         ports:
         - containerPort: 80
+        env:
+          - name: ASPNETCORE_ENVIRONMENT
+            value: Development
+          - name: SQL_SERVER
+            value: sqlserverrnr9881.database.windows.net
+          - name: SQL_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: test-secret
+                key: password
+          - name: SQL_USER
+            valueFrom:
+              secretKeyRef:
+                name: test-secret
+                key: User
 
