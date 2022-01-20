@@ -18,3 +18,6 @@ az aks create `
 
 
     az aks update -n myCluster -g teamawesome2 --attach-acr registryrnr9881
+
+# testing connectivity out of the pods
+kubectl exec -it --namespace api trips-deployment-99f6b56cb-mklvx -- ping 10.2.0.4
