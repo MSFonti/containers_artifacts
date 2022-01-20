@@ -20,7 +20,7 @@ spec:
       - name: userjava
         image: registryrnr9881.azurecr.io/userjava:v1
         ports:
-        - containerPort: 8080
+        - containerPort: 80
         volumeMounts:
         - name: secrets-store01-inline
           mountPath: "/mnt/secrets-store"
