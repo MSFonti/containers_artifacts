@@ -12,3 +12,4 @@ az aks update -n myCluster -g teamawesome --attach-acr registryrnr9881
 az account set --subscription ede43ea8-2169-4c98-b245-311bbb2b78dc
 az aks get-credentials --resource-group teamawesome --name myCluster
 kubectl apply -f .\deployment.yaml
+
