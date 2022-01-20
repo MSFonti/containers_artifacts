@@ -20,19 +20,20 @@ spec:
         image: registryrnr9881.azurecr.io/trips:v1
         ports:
         - containerPort: 80
+        volumeMounts:
+        - name: secrets-store01-inline
+          mountPath: "/mnt/secrets-store"
+          readOnly: true
         env:
           - name: ASPNETCORE_ENVIRONMENT
             value: Development
           - name: SQL_SERVER
             value: sqlserverrnr9881.database.windows.net
-          - name: SQL_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: test-secret
-                key: password
-          - name: SQL_USER
-            valueFrom:
-              secretKeyRef:
-                name: test-secret
-                key: User
-
+      volumes:
+        - name: secrets-store01-inline
+          csi:
+           driver: secrets-store.csi.k8s.io
+           readOnly: true
+           volumeAttributes:
+            secretProviderClass: "azure-kvname-user-msi"
+     

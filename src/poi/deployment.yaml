@@ -27,16 +27,6 @@ spec:
         env:
         - name: SQL_SERVER
           value: sqlserverrnr9881.database.windows.net
-        - name: SQL_USER
-          valueFrom:
-            secretKeyRef:
-              key: SQL_USER
-              name: secrets-store01-inline
-        - name: SQL_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              key: SQL_PASSWORD
-              name: secrets-store01-inline
       volumes:
         - name: secrets-store01-inline
           csi:
