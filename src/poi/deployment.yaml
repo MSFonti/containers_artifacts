@@ -25,6 +25,8 @@ spec:
           mountPath: "/mnt/secrets-store"
           readOnly: true
         env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: Development
         - name: SQL_SERVER
           value: sqlserverrnr9881.database.windows.net
       volumes:
