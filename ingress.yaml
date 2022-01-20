@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: teamawesome
+  annotations:
+    kubernetes.io/ingress.class: addon-http-application-routing
+spec:
+  rules:
+  - host: aks-helloworld.<CLUSTER_SPECIFIC_DNS_ZONE>
+    http:
+      paths:
+      - path: /api/poi
+        pathType: Prefix
+        backend:
+          service: 
+            name: poi
+            port: 
+              number: 80
