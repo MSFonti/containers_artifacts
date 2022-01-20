@@ -2,19 +2,59 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: poi
+  namespace: api
   annotations:
     kubernetes.io/ingress.class: addon-http-application-routing
-    nginx.ingress.kubernetes.io/rewrite-target: /$1
-    nginx.ingress.kubernetes.io/use-regex: "true"
 spec:
   rules:
-  - host: team.c0e53df537a4392afde.northeurope.aksapp.io
+  - host: team.cc0e53df537a4392afde.northeurope.aksapp.io
     http:
       paths:
-      - path: /api/poi(/|$)(.*)
+      - path: /api/poi
         pathType: Prefix
         backend:
           service: 
             name: poi
+            port: 
+              number: 80
+      - path: /api/trips
+        pathType: Prefix
+        backend:
+          service: 
+            name: trips
+            port: 
+              number: 80
+      - path: /api/user
+        pathType: Prefix
+        backend:
+          service: 
+            name: userprofile
+            port: 
+              number: 80
+      - path: /api/user-java
+        pathType: Prefix
+        backend:
+          service: 
+            name: userjava
+            port: 
+              number: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: web
+  namespace: web
+  annotations:
+    kubernetes.io/ingress.class: addon-http-application-routing
+spec:
+  rules:
+  - host: team.cc0e53df537a4392afde.northeurope.aksapp.io
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service: 
+            name: tripviewer
             port: 
               number: 80
